@@ -24,6 +24,7 @@ func _unhandled_input(event):
 
 func set_state(s):
 	state_name = s
+	print(state_name)
 	var new_state = get_node(s)
 	if state != null:
 		if state.has_method("end"):

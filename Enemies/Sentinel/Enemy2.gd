@@ -11,7 +11,7 @@ func damage(var d):
 		queue_free()
 
 func _ready():
-	$AnimatedSprite.play("default")
+	$AnimatedSprite.play("Movement")
 	if direction > 0:
 		$AnimatedSprite.flip_h = true
 	else:
