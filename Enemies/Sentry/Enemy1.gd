@@ -19,7 +19,7 @@ var shot = false #how many times has shot per attack
 
 export var damage = 2
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	player = get_node_or_null("/root/Level/Player")
 	if not player == null:
 		if attacking:
