@@ -109,7 +109,6 @@ func _physics_process(_delta):
 	else:
 		velocity.x = clamp(velocity.x,-max_move - added_x_velocity,max_move + added_x_velocity)
 		added_x_velocity = clamp(added_x_velocity - 5, 0, 1000000.0)
-		print(added_x_velocity)
 	if direction < 0 and not $AnimatedSprite.flip_h: 
 		$AnimatedSprite.flip_h = true
 	if direction > 0 and $AnimatedSprite.flip_h: 
