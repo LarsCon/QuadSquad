@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Sprites/Sample/TileSet.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Sentry/Enemy1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Space/SpacePlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Civil/CivilPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/Sentinel/Enemy2.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -54,4 +54,3 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-max_health = 64
