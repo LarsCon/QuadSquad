@@ -21,6 +21,9 @@ Assets, or resources used
 
 # Created by: Quad Squad
 Brady Sutton
+
 Erika Becker
+
 James Petersen
+
 Lars Conard
