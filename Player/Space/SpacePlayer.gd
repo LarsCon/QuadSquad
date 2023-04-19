@@ -10,14 +10,14 @@ onready var WJ = $Weapon_Joint
 var velocity = Vector2.ZERO
 var direction = 1
 
-export var gravity = Vector2(0,14)
+var gravity = Vector2(0,14)
 
-export var reverse_boost = 6
-export var move_speed = 10
-export var max_move = 100
-export var jump_power = 325
-export var shoot_cooldown = 0.5
-export var invulnerability_duration = 1
+var reverse_boost = 8
+var move_speed = 10
+var max_move = 100
+var jump_power = 325
+var shoot_cooldown = 0.5
+var invulnerability_duration = 1
 
 var invulnerable = false
 var shooting = false
