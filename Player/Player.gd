@@ -5,7 +5,7 @@ var UI
 
 onready var Projectile = load("res://Player/Player_Projectile.tscn")
 
-onready var SM = $StateMachine
+onready var SM = $State_Machine
 onready var AS = $AnimatedSprite
 
 var velocity = Vector2.ZERO

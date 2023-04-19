@@ -69,6 +69,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "Idle"
+frame = 3
 playing = true
 
 [node name="Detect_Terrain" type="RayCast2D" parent="."]
