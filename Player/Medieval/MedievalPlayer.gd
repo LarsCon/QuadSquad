@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var Effects
+onready var Projectile = load("res://Player/Medieval/Weapon.tscn")
 var UI
 
 onready var SM = $State_Machine
@@ -8,24 +9,32 @@ onready var AS = $AnimatedSprite
 onready var WJ = $Weapon_Joint
 
 var velocity = Vector2.ZERO
+var added_x_velocity = 0.0
+
 var direction = 1
 
 var gravity = Vector2(0,14)
 
-var reverse_boost = 8
+var reverse_boost = 400
 var move_speed = 10
 var max_move = 100
 var jump_power = 325
-var shoot_cooldown = 0.5
+var shoot_cooldown = 1.25
 var invulnerability_duration = 1
 
 var invulnerable = false
-var shooting = false
+var shoot_launch = false
 var detects_ground = false
+var cooldown = false
+
+var can_shoot = false
 
 export var max_health = 64
 var health = 64.0
-var damage = 15.0
+var damage = 5.0
+
+var shoot_power = 0.0
+var max_power = 100.0
 
 func _ready():
 	UI = get_node_or_null("/root/Level/CanvasLayer/UI")
@@ -69,36 +78,41 @@ func trigger_invulnerable():
 func jump():
 	velocity = Vector2(velocity.x, velocity.y - (jump_power))
 
-var beamTime = 10
-
 
 func shoot():
-	var line = $Weapon_Joint/Weapon_Muzzle/Line2D
-	line.clear_points()
-	line.add_point(Vector2.ZERO)
-	if $Weapon_Joint/Weapon_Muzzle/Beam_RayCast.is_colliding():
-		line.add_point(Vector2(get_global_transform().origin.distance_to($Weapon_Joint/Weapon_Muzzle/Beam_RayCast.get_collision_point()) - 8, 0))
-		$Sparks.visible = true
-		$Sparks.global_position = $Weapon_Joint/Weapon_Muzzle/Beam_RayCast.get_collision_point()
-	else:
-		line.add_point($Weapon_Joint/Weapon_Muzzle/Beam_End.position)
-		$Sparks.visible = false
-	if $Weapon_Joint/Weapon_Muzzle/Enemy_Detect1.is_colliding():
-		if $Weapon_Joint/Weapon_Muzzle/Enemy_Detect1.get_collider().has_method("damage"):
-			$Weapon_Joint/Weapon_Muzzle/Enemy_Detect1.get_collider().damage((damage / 100.0))
-	elif $Weapon_Joint/Weapon_Muzzle/Enemy_Detect2.is_colliding():
-		if $Weapon_Joint/Weapon_Muzzle/Enemy_Detect2.get_collider().has_method("damage"):
-			$Weapon_Joint/Weapon_Muzzle/Enemy_Detect2.get_collider().damage((damage / 100.0))
-	
+	print(shoot_power)
+	shoot_launch = true
+	Effects = get_node_or_null("/root/Level/Effects")
+	if Effects != null and Projectile != null:
+		var projectile = Projectile.instance()
+		Effects.add_child(projectile)
+		projectile.global_position = $Weapon_Joint.global_position
+		projectile.direction = Vector2.UP.rotated($Weapon_Joint.rotation + PI/2)
+		projectile.damage = damage
+		projectile.speed += shoot_power
+		projectile.damage += shoot_power / 10
+		projectile.ready()
+	cooldown_timer(cooldown)
 
+func cooldown_timer(var time):
+	cooldown = true
+	var t = Timer.new()
+	t.set_wait_time(time)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	cooldown = false
 
 func _physics_process(_delta):
 	$Weapon_Joint.look_at(get_global_mouse_position())
 	detects_ground = $Detect_Ground.is_colliding()
-	if not shooting:
+	if can_shoot:
 		velocity.x = clamp(velocity.x,-max_move,max_move)
 	else:
-		velocity.x = clamp(velocity.x,-max_move * 1.25,max_move * 1.25)
+		velocity.x = clamp(velocity.x,-max_move - added_x_velocity,max_move + added_x_velocity)
+		added_x_velocity = clamp(added_x_velocity - 5, 0, 1000000.0)
 	if direction < 0 and not $AnimatedSprite.flip_h: 
 		$AnimatedSprite.flip_h = true
 	if direction > 0 and $AnimatedSprite.flip_h: 
@@ -107,13 +121,7 @@ func _physics_process(_delta):
 		$Weapon_Joint.scale = Vector2(1, -1)
 	else:
 		$Weapon_Joint.scale = Vector2(1, 1)
-	if Input.is_action_pressed("shoot"):
-		shooting = true
-		shoot()
-	else:
-		shooting = false
-		$Weapon_Joint/Weapon_Muzzle/Line2D.clear_points()
-		$Sparks.visible = false
+	$Weapon_Joint/Weapon/Weapon_Sprite.visible = not cooldown
 
 func set_direction(d):
 	if not d == 0:
