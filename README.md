@@ -14,13 +14,14 @@ The biggest struggle that we had with this project was handling merge errors and
 ## Implementation
 Built using Godot 3.5
 The bat enemy is from the Medieval Fantasy Character Pack by OcO. CC0 Licensed
-The background for each level was made by Erika in Procreate.
+The tilemap we used was from Kenny (https://kenney.nl/assets/abstract-platformer)
+The shader used for the start and end menu was Starfield by iVader on (https://godotshaders.com/shader/starfield/)
 
 ## References
 
 
-
 ## Future Development
+If we were to work on this in the future we would add more enemies, music/sound, and more levels.
 
 # Created by: Quad Squad
 Brady Sutton
