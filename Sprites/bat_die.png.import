@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/long_metal_spike.png-e62b1d4f4bc1a898cfe37d61984ec508.stex"
+path="res://.import/bat_die.png-df03f55950cf0c366e7e07b5decb0175.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Spike/long_metal_spike.png"
-dest_files=[ "res://.import/long_metal_spike.png-e62b1d4f4bc1a898cfe37d61984ec508.stex" ]
+source_file="res://Sprites/bat_die.png"
+dest_files=[ "res://.import/bat_die.png-df03f55950cf0c366e7e07b5decb0175.stex" ]
 
 [params]
 
