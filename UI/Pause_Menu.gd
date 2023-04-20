@@ -8,7 +8,7 @@ func _ready():
 func _on_Restart_pressed():
 	Global.reset()
 	get_tree().paused = false
-	var _scene = get_tree().change_scene("res://Levels/Space.tscn")
+	var _scene = get_tree().change_scene("res://Game.tscn")
 
 
 func _on_Quit_pressed():
