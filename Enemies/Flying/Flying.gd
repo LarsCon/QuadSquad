@@ -3,7 +3,7 @@ extends KinematicBody2D
 var player = null
 onready var ray = $See
 export var speed = 1500
-export var looking_speed = 100
+export var looking_speed = 400
 var line_of_sight = false
 
 var mode = ""
@@ -44,7 +44,7 @@ func change_mode(m):
 		mode = m
 		$AnimatedSprite.play(mode)
 		
-func damage(var dmg):
+func damage():
 	change_mode("Die")
 	collision_layer = 0
 	collision_mask = 0
@@ -67,9 +67,10 @@ func _on_Timer_timeout():
 
 func _on_Above_and_Below_body_entered(body):
 	if body.name == "Player" and mode != "Idle":
-		body.damage(1)
+		body.die()
 		queue_free()
-
+		
+		
 
 
 func _on_AnimatedSprite_animation_finished():

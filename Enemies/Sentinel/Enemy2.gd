@@ -13,9 +13,9 @@ func damage(var d):
 func _ready():
 	$AnimatedSprite.play("Movement")
 	if direction > 0:
-		$AnimatedSprite.flip_h = false
-	else:
 		$AnimatedSprite.flip_h = true
+	else:
+		$AnimatedSprite.flip_h = false
 
 func _physics_process(delta):
 	if not $Detection/Ground_Detection.is_colliding() or $Detection/Wall_Detection.is_colliding():
