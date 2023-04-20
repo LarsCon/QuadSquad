@@ -9,14 +9,11 @@ func _ready():
 	lives_pos.x = 20
 	lives_pos.y = Global.vp.y - 20
 	update_score()
-	update_time()
 	update_lives()
 	
 func update_score():
-	$Score.text = "Score: " + str(Global.score)
+	$Label.text = "Score: " + str(Global.score)
 	
-func update_time():
-	$Time.text = "Time: " + str(Global.time)
 	
 func update_lives():
 	lives_pos = Vector2(20, Global.vp.y - 20) 
@@ -32,6 +29,5 @@ func _on_Timer_timeout():
 	Global.time -= 1
 	if Global.time < 0:
 		var _scene = get_tree().change_scene("res://UI/End_Game.tscn")
-	else:
-		update_time()
+	
 
