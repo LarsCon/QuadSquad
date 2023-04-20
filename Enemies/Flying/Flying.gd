@@ -69,7 +69,8 @@ func _on_Above_and_Below_body_entered(body):
 	if body.name == "Player" and mode != "Idle":
 		body.damage(1)
 		queue_free()
-
+		
+		
 
 
 func _on_AnimatedSprite_animation_finished():

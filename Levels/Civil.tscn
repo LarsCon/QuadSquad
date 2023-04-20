@@ -323,9 +323,6 @@ position = Vector2( 593, 689 )
 [node name="Enemy3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1588, 688 )
 
-[node name="Enemy4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1216, 687 )
-
 [node name="Navigation2D" type="Navigation2D" parent="."]
 visible = false
 
