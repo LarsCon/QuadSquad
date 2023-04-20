@@ -21,6 +21,10 @@ func _physics_process(delta):
 	if not $Detection/Ground_Detection.is_colliding() or $Detection/Wall_Detection.is_colliding():
 		turn()
 	move_and_slide(Vector2.RIGHT * direction * speed, Vector2.UP)
+	if direction > 0:
+		$AnimatedSprite.flip_h = false
+	else:
+		$AnimatedSprite.flip_h = true
 
 func turn():
 	direction *= -1
