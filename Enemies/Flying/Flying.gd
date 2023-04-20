@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 var player = null
 onready var ray = $See
-var speed = 1
-export var looking_speed = 100
+export var speed = 1500
+export var looking_speed = 400
 var line_of_sight = false
 
 var mode = ""
@@ -19,6 +19,7 @@ func _ready():
 func _physics_process(delta):
 	var velocity = Vector2.ZERO
 	player = get_node_or_null("/root/Level/Player")
+	print(player)
 	if player != null and mode != "Die":
 		ray.cast_to = ray.to_local(player.global_position)
 		var c = ray.get_collider()
@@ -43,7 +44,7 @@ func change_mode(m):
 		mode = m
 		$AnimatedSprite.play(mode)
 		
-func damage(var d):
+func damage():
 	change_mode("Die")
 	collision_layer = 0
 	collision_mask = 0
@@ -60,14 +61,16 @@ func _on_Timer_timeout():
 		var bodies = $Attack.get_overlapping_bodies()
 		for body in bodies:
 			if body.name == "Player":
-				body.damage(5)
+				body.die()
 		change_mode("Move")
 
 
 func _on_Above_and_Below_body_entered(body):
 	if body.name == "Player" and mode != "Idle":
-		body.damage(5)
-		#queue_free()
+		body.die()
+		queue_free()
+		
+		
 
 
 func _on_AnimatedSprite_animation_finished():
