@@ -26,13 +26,6 @@ margin_bottom = 40.0
 text = "SCORE: "
 valign = 1
 
-[node name="If We Want Time" type="Label" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 14.0
-
-[node name="If We Want Timer" type="Timer" parent="."]
-
 [node name="Inicator_Container" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
