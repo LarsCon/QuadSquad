@@ -71,8 +71,6 @@ func attacking():
 	$Joint/Sprite.flip_h = value
 	generate_projectile(attacking_direction)
 	cooldown_timer(attack_rate)
-			#if $Line2D.get_point_count() != 0:
-			#	$Line2D.clear_points()
 
 func generate_projectile(var vector):
 	Effects = get_node_or_null("/root/Level/Effects")
