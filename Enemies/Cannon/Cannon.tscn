@@ -41,11 +41,9 @@ texture = ExtResource( 3 )
 [node name="Gun" type="Node2D" parent="Joint"]
 position = Vector2( 23.7534, -0.879669 )
 rotation = 0.218166
-scale = Vector2( 1, 1 )
 
 [node name="Detect_Terrain" type="RayCast2D" parent="."]
 position = Vector2( -1, -6 )
-scale = Vector2( 1, 1 )
 enabled = true
 cast_to = Vector2( 0, 0 )
 collision_mask = 128
