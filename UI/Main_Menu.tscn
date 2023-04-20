@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/Main_Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/new_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Assets/ShareTech-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Updated_Assets/title_fixed.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
@@ -362,6 +363,7 @@ anchor_bottom = 1.0
 color = Color( 0.141176, 0.137255, 0.137255, 1 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_right = 1024.0
 margin_bottom = 400.0
 theme = SubResource( 2 )
@@ -371,19 +373,28 @@ valign = 1
 
 [node name="Play" type="Button" parent="."]
 margin_left = 412.0
-margin_top = 280.0
+margin_top = 380.0
 margin_right = 612.0
-margin_bottom = 320.0
+margin_bottom = 420.0
 theme = ExtResource( 2 )
 text = "Play"
 
 [node name="Quit" type="Button" parent="."]
 margin_left = 413.0
-margin_top = 350.0
+margin_top = 450.0
 margin_right = 613.0
-margin_bottom = 390.0
+margin_bottom = 490.0
 theme = ExtResource( 2 )
 text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 112.0
+margin_top = 52.0
+margin_right = -120.0
+margin_bottom = -275.0
+texture = ExtResource( 4 )
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
