@@ -24,13 +24,13 @@ var invulnerability_duration = 1
 
 var invulnerable = false
 var shoot_launch = false
-var detects_ground = false
+var detects_ground = true
 var cooldown = false
 
-var can_shoot = false
+var can_shoot = true
 
-export var max_health = 64
-var health = 64.0
+export var max_health = 5
+var health = 5.0
 var damage = 5.0
 
 var shoot_power = 0.0
@@ -55,15 +55,16 @@ func damage(var d):
 		jump_power = 0
 		gravity = Vector2.ZERO
 		velocity = Vector2.ZERO
-		$AnimatedSprite.visible = false
+		$AnimatedSprite.play("Death")
+		$Weapon_Joint/Weapon/Weapon_Sprite.visible = false
 		var t = Timer.new()
-		t.set_wait_time(1.0)
+		t.set_wait_time(1.5)
 		t.set_one_shot(true)
 		self.add_child(t)
 		t.start()
 		yield(t, "timeout")
 		t.queue_free()
-		#var _scene = get_tree().change_scene("res://UI/End_Game.tscn")
+		var _scene = get_tree().change_scene("res://UI/End_Game.tscn")
 func trigger_invulnerable():
 	invulnerable = true
 	var t = Timer.new()
@@ -80,7 +81,6 @@ func jump():
 
 
 func shoot():
-	print(shoot_power)
 	shoot_launch = true
 	Effects = get_node_or_null("/root/Level/Effects")
 	if Effects != null and Projectile != null:
@@ -89,10 +89,10 @@ func shoot():
 		projectile.global_position = $Weapon_Joint.global_position
 		projectile.direction = Vector2.UP.rotated($Weapon_Joint.rotation + PI/2)
 		projectile.damage = damage
-		projectile.speed += shoot_power
+		projectile.speed += shoot_power * 2
 		projectile.damage += shoot_power / 10
 		projectile.ready()
-	cooldown_timer(cooldown)
+	cooldown_timer(shoot_cooldown)
 
 func cooldown_timer(var time):
 	cooldown = true

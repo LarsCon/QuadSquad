@@ -23,13 +23,13 @@ var invulnerability_duration = 1
 
 var invulnerable = false
 var shoot_launch = false
-var detects_ground = false
+var detects_ground = true
 var cooldown = false
 
-var can_shoot = false
+var can_shoot = true
 
-export var max_health = 64
-var health = 64.0
+export var max_health = 5
+var health = 5.0
 var damage = 5.0
 
 var shoot_power = 0.0
@@ -42,6 +42,7 @@ func _ready():
 	health = max_health
 
 func damage(var d):
+	print(health)
 	if not invulnerable:
 		health -= d
 		trigger_invulnerable()
@@ -53,15 +54,16 @@ func damage(var d):
 		jump_power = 0
 		gravity = Vector2.ZERO
 		velocity = Vector2.ZERO
-		$AnimatedSprite.visible = false
+		$AnimatedSprite.play("Death")
+		$Weapon_Joint/Weapon_Sprite.visible = false
 		var t = Timer.new()
-		t.set_wait_time(1.0)
+		t.set_wait_time(1.5)
 		t.set_one_shot(true)
 		self.add_child(t)
 		t.start()
 		yield(t, "timeout")
 		t.queue_free()
-		#var _scene = get_tree().change_scene("res://UI/End_Game.tscn")
+		var _scene = get_tree().change_scene("res://UI/End_Game.tscn")
 func trigger_invulnerable():
 	invulnerable = true
 	var t = Timer.new()

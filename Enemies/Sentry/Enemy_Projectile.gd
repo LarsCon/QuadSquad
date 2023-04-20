@@ -6,8 +6,7 @@ var damage = 2
 
 func _ready():
 	$AnimatedSprite.play("default")
-	if direction.x > 0:
-		$AnimatedSprite.flip_h = true
+	rotation = direction.angle()
 
 func _physics_process(delta):
 	move_and_slide(direction * speed, Vector2.UP)

@@ -14,6 +14,10 @@ config/name="Final_Project_MSCH_C220"
 run/main_scene="res://Levels/Space.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

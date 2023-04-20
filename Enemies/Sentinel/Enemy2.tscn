@@ -44,6 +44,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Movement"
+frame = 2
 playing = true
 
 [node name="AttackCollide" type="Area2D" parent="."]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Updated_Assets/Assets/Enemies/Flying/UFO_Flying.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/UFO/UFO.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=29]
+animations = [ {
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "Move",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 13, 9 )
+
+[sub_resource type="CircleShape2D" id=31]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 12.5, 9.75 )
+
+[node name="Flying" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+looking_speed = 50
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -4.002, -1.766 )
+frames = SubResource( 29 )
+animation = "Move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4, 1 )
+shape = SubResource( 30 )
+
+[node name="See" type="RayCast2D" parent="."]
+
+[node name="Attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2( -4, 0 )
+shape = SubResource( 31 )
+
+[node name="Timer" type="Timer" parent="Attack"]
+
+[node name="Above_and_Below" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Above_and_Below"]
+position = Vector2( -4, -1.25 )
+shape = SubResource( 32 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Attack" to="." method="_on_Attack_body_entered"]
+[connection signal="timeout" from="Attack/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Above_and_Below" to="." method="_on_Above_and_Below_body_entered"]
