@@ -105,7 +105,8 @@ position = Vector2( 238, -1 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 114, 0 )
+
 [node name="Flying" parent="." instance=ExtResource( 5 )]
 position = Vector2( -105, -84 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
