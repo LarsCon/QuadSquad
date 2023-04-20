@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player/Civil/CivilPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Our Sprites/Other/Tiles.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Enemies/Bayonet/Enemy2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/Cannon/Cannon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Flying/Flying.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/Our Sprites/Other/background.jpg" type="Texture" id=8]
 
 [sub_resource type="NavigationPolygon" id=27]
 vertices = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -291,12 +292,10 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="Level" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1277.0
-margin_top = -1089.0
-margin_right = 4680.0
-margin_bottom = 1611.0
-color = Color( 0.223529, 0.14902, 0.00784314, 1 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1289, 338 )
+scale = Vector2( 2.00719, 2.00719 )
+texture = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -322,6 +321,9 @@ position = Vector2( 593, 689 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1588, 688 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2383, 688 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 visible = false
