@@ -19,7 +19,6 @@ func _on_Timer_timeout():
 	queue_free()
 
 func _on_AttackCollide_body_entered(body):
-	print(body.name)
 	if body.name != "Player":
 		var pos = global_position
 		self.get_parent().remove_child(self)

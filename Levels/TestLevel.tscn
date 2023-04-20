@@ -70,14 +70,8 @@ outlines = [ PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 ) ]
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": null,
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
 1/z_index = 0
 
 [node name="Level" type="Node2D"]
@@ -111,8 +105,7 @@ position = Vector2( 238, -1 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 114, 0 )
-
 [node name="Flying" parent="." instance=ExtResource( 5 )]
 position = Vector2( -105, -84 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
