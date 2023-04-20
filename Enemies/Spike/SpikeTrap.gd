@@ -2,7 +2,6 @@ extends Area2D
 
 
 func _ready():
-	#$AnimationPlayer.play("NAME OF ANIMATION IF WE WANT ONE For The Spike")
 	pass
 
 
