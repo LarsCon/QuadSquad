@@ -1,0 +1,12 @@
+Enemies
+	Flying
+		Bird
+	Platform runner
+		Dinosaur
+Other
+	Heart explosion
+	Tilemap?
+	Boulder?
+Player
+	SpaceMan, CaveMan, CivilWarMan
+		Jump, Death, Run, Idle
