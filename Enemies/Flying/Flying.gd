@@ -19,7 +19,6 @@ func _ready():
 func _physics_process(delta):
 	var velocity = Vector2.ZERO
 	player = get_node_or_null("/root/Level/Player")
-	print(player)
 	if player != null and mode != "Die":
 		ray.cast_to = ray.to_local(player.global_position)
 		var c = ray.get_collider()
