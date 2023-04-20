@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
 var direction = Vector2.ZERO
-var speed = 200
+var speed = 300
 var damage = 2
 var moving = true
 
 func ready():
-	if direction.x > 0:
-		$Weapon_Sprite.flip_h = true
+	#if direction.x > 0:
+		#$Weapon_Sprite.flip_h = true
 	rotation_degrees = rad2deg(direction.angle())
 	moving = true
 
@@ -26,5 +26,4 @@ func _on_AttackCollide_body_entered(body):
 		global_position = pos
 		if body.has_method("damage"):
 			body.damage(damage)
-		print(self.get_parent().name)
 		moving = false

@@ -1,44 +1,132 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Player/Space/SpaceIn_Air.gd" type="Script" id=1]
 [ext_resource path="res://Player/Space/SpaceIdle.gd" type="Script" id=2]
 [ext_resource path="res://Player/Space/SpaceMoving.gd" type="Script" id=3]
 [ext_resource path="res://Player/Space/SpacePlayer.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/Sample/PlayerStandard.png" type="Texture" id=5]
+[ext_resource path="res://Updated_Assets/Assets/Player/Template/Template_Idle.png" type="Texture" id=5]
 [ext_resource path="res://Player/StateMachine/State_Machine.gd" type="Script" id=6]
-[ext_resource path="res://Sprites/Sample/LaserGun.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Sample/istockphoto-1313501907-612x612.jpg" type="Texture" id=8]
-[ext_resource path="res://Sprites/Sample/flamestexture.png" type="Texture" id=9]
+[ext_resource path="res://Updated_Assets/Assets/Player/Space/Laser_Cannon.png" type="Texture" id=7]
+[ext_resource path="res://Updated_Assets/Assets/Player/Space/Laser_Impact.png" type="Texture" id=8]
+[ext_resource path="res://Updated_Assets/Assets/Player/Space/HDLaser.png" type="Texture" id=9]
+[ext_resource path="res://Updated_Assets/Assets/Player/Template/Template_Jump.png" type="Texture" id=10]
+[ext_resource path="res://Updated_Assets/Assets/Player/Template/Template_Death.png" type="Texture" id=11]
+[ext_resource path="res://Updated_Assets/Assets/Player/Template/Template_Run.png" type="Texture" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
 height = 14.0
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 11 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 11 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 11 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 10, 28 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 12 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 12 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 12 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 12 )
+region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 2 ) ],
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
 "loop": true,
-"name": "default",
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "Run",
 "speed": 5.0
 } ]
 
-[sub_resource type="AnimatedTexture" id=6]
-flags = 6
-fps = 0.0
-frame_0/texture = ExtResource( 9 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
+[sub_resource type="AtlasTexture" id=48]
 atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 612, 612 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 5 ) ],
+"frames": [ SubResource( 48 ), SubResource( 49 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -54,7 +142,10 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.875, 0.875 )
 frames = SubResource( 3 )
+animation = "Idle"
+playing = true
 
 [node name="State_Machine" type="Node" parent="."]
 script = ExtResource( 6 )
@@ -74,11 +165,12 @@ cast_to = Vector2( 0, 15 )
 collision_mask = 128
 
 [node name="Weapon_Joint" type="Node2D" parent="."]
-position = Vector2( -1, 2 )
-rotation = 0.74002
+position = Vector2( -1.63913e-07, 5 )
+rotation = -5.92539
 
 [node name="Weapon_Sprite" type="Sprite" parent="Weapon_Joint"]
-position = Vector2( 2, 0 )
+position = Vector2( 2.81002, -1.05062 )
+scale = Vector2( 0.45, 0.45 )
 z_index = 1
 texture = ExtResource( 7 )
 
@@ -87,8 +179,9 @@ position = Vector2( 9.5, -0.5 )
 
 [node name="Line2D" type="Line2D" parent="Weapon_Joint/Weapon_Muzzle"]
 points = PoolVector2Array( 0, 0, 0, 0 )
+width = 4.0
 default_color = Color( 1, 1, 1, 1 )
-texture = SubResource( 6 )
+texture = ExtResource( 9 )
 texture_mode = 1
 
 [node name="Beam_RayCast" type="RayCast2D" parent="Weapon_Joint/Weapon_Muzzle"]
@@ -112,5 +205,6 @@ collision_mask = 141
 
 [node name="Sparks" type="AnimatedSprite" parent="."]
 visible = false
-scale = Vector2( 0.04, 0.04 )
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 4 )
+playing = true

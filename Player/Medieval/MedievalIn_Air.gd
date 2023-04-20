@@ -7,7 +7,8 @@ func _ready():
 	yield(player, "ready")
 
 func start():
-	player.set_animation("")
+	if player.health > 0:
+		player.set_animation("Jump")
 
 func physics_process(_delta):
 	var input_vector = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0)

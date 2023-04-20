@@ -7,7 +7,8 @@ func _ready():
 	yield(player, "ready")
 
 func start():
-	player.set_animation("")
+	if player.health <= 0:
+		player.set_animation("")
 
 func physics_process(_delta):
 	if Input.is_action_just_released("shoot"):

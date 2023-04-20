@@ -48,3 +48,6 @@ margin_right = 612.0
 margin_bottom = 390.0
 theme = ExtResource( 2 )
 text = "QUIT"
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
