@@ -16,6 +16,7 @@ Built using Godot 3.5
 The bat enemy is from the Medieval Fantasy Character Pack by OcO. CC0 Licensed
 The tilemap we used was from Kenny (https://kenney.nl/assets/abstract-platformer)
 The shader used for the start and end menu was Starfield by iVader on (https://godotshaders.com/shader/starfield/)
+The font used for the buttons is Share Tech by Carrois Apostrophe on Google Fonts. (https://fonts.google.com/specimen/Share+Tech?query=Tech&category=Serif,Sans+Serif,Handwriting)
 
 ## References
 None
